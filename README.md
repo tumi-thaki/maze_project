@@ -21,3 +21,8 @@ $ https://github.com/tumi-thaki/maze_project.git
 ```sh
 $ gcc -Wall -Werror -Wextra -pedantic ./src/*.c -lm -o maze `sdl2-config --cflags` `sdl2-config --libs`;
 ```
+### Run:
+        ./maze;
+
+### Clean:
+        rm maze;
