@@ -39,13 +39,15 @@ void renderFloor(int wallBottomPixel, color_t *texelColor, int x)
 		distance = (ratio * PROJ_PLANE)
 					/ cos(rays[x].rayAngle - player.rotationAngle);
 
-		textureOffsetY = (int)abs((distance * sin(rays[x].rayAngle)) + player.y);
-		textureOffsetX = (int)abs((distance * cos(rays[x].rayAngle)) + player.x);
+		//textureOffsetY = (int)abs((distance * sin(rays[x].rayAngle)) + player.y);
+        textureOffsetY = abs((int)((distance * sin(rays[x].rayAngle)) + player.y));
+		//textureOffsetX = (int)abs((distance * cos(rays[x].rayAngle)) + player.x);
+        textureOffsetX = abs((int)((distance * cos(rays[x].rayAngle)) + player.x));
 
-		textureOffsetX = (int)(abs(textureOffsetX * texture_width / 30)
-								% texture_width);
-		textureOffsetY = (int)(abs(textureOffsetY * texture_height / 30)
-								% texture_height);
+		textureOffsetX = abs((int)((textureOffsetX * texture_width / 30)
+								% texture_width));
+		textureOffsetY = abs((int)((textureOffsetY * texture_height / 30)
+								% texture_height));
 
 		*texelColor = wallTextures[4].
 					  texture_buffer[(texture_width * textureOffsetY) + textureOffsetX];
@@ -75,13 +77,13 @@ void renderCeil(int wallTopPixel, color_t *texelColor, int x)
 		distance = (ratio * PROJ_PLANE)
 					/ cos(rays[x].rayAngle - player.rotationAngle);
 
-		textureOffsetY = (int)abs((-distance * sin(rays[x].rayAngle)) + player.y);
-		textureOffsetX = (int)abs((-distance * cos(rays[x].rayAngle)) + player.x);
+		textureOffsetY = abs((int)((-distance * sin(rays[x].rayAngle)) + player.y));
+		textureOffsetX = abs((int)((-distance * cos(rays[x].rayAngle)) + player.x));
 
-		textureOffsetX = (int)(abs(textureOffsetX * texture_width / 40)
-								% texture_width);
-		textureOffsetY = (int)(abs(textureOffsetY * texture_height / 40)
-								% texture_height);
+		textureOffsetX = abs((int)((textureOffsetX * texture_width / 40)
+								% texture_width));
+		textureOffsetY = abs((int)((textureOffsetY * texture_height / 40)
+								% texture_height));
 
 		*texelColor = wallTextures[6].
 					  texture_buffer[(texture_width * textureOffsetY) + textureOffsetX];
